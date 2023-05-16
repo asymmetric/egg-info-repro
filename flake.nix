@@ -26,6 +26,11 @@
         python = pythonVersion;
         overrides = [
           pkgs.poetry2nix.defaultPoetryOverrides
+          (final: prev: {
+            setuptools = prev.setuptools.overrideAttrs (old: {
+              patches = (old.patches or []) ++ [ ./debug.patch ];
+            });
+          })
         ];
       };
     in

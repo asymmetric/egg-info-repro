@@ -1,0 +1,22 @@
+diff --git a/setuptools/build_meta.py b/setuptools/build_meta.py
+index 8ff9a5ce..eff4e724 100644
+--- a/setuptools/build_meta.py
++++ b/setuptools/build_meta.py
+@@ -356,6 +356,17 @@ class _BuildMetaBackend(_ConfigSettingsTranslator):
+     def _find_info_directory(self, metadata_directory: str, suffix: str) -> Path:
+         for parent, dirs, _ in os.walk(metadata_directory):
+             candidates = [f for f in dirs if f.endswith(suffix)]
++            print(">>>>>")
++            print(f"metadata_directory: {metadata_directory}")
++            print(f"listdir: {os.listdir(metadata_directory)}")
++            print(f"parent: {parent}")
++            print(f"listdir(parent): {os.listdir(parent)}")
++            print(f"cwd: {os.getcwd()}")
++            print(f"listdir: {os.listdir(os.getcwd())}")
++            print(f"dirs: {dirs}")
++            print(f"len(dirs): {len(dirs)}")
++            print(f"candidates: {candidates}")
++            print(f"len(candidates): {len(candidates)}")
+ 
+             if len(candidates) != 0 or len(dirs) != 1:
+                 assert len(candidates) == 1, f"Multiple {suffix} directories found"
